@@ -10,13 +10,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Student")
 public class Student {
     @Id
-    int id;
+    String id;
     String studentName;
     String studentField;
     String studentContact;
     String studentEmail;
     String additonalDetails;
-    int streamId;
+    String streamId;
     @OneToOne
     Stream stream;
 
@@ -24,8 +24,8 @@ public class Student {
 
     }
 
-    public Student(int id, String studentName, String studentField, String studentContact, String studentEmail,
-            String additonalDetails, int streamId) {
+    public Student(String id, String studentName, String studentField, String studentContact, String studentEmail,
+            String additonalDetails, String streamId) {
         this.id = id;
         this.studentName = studentName;
         this.studentField = studentField;
@@ -35,19 +35,19 @@ public class Student {
         this.stream = new Stream(streamId, "", "", "");
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getStreamId() {
+    public String getStreamId() {
         return streamId;
     }
 
-    public void setStreamId(int id) {
+    public void setStreamId(String id) {
         this.streamId = id;
     }
 

@@ -2,6 +2,7 @@ package SpringTuition.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,18 +20,17 @@ public class TopicService {
     // new Topics(2, 2, "JDK", "JAVA"), new Topics(3, 1, "SpringBoot", "Spring
     // Tuorial")));
 
-    public List<Topic> getAllTopics(int courseId) {
+    public List<Topic> getAllTopics(String courseId) {
         // return this.topics;
         List<Topic> t = new ArrayList<>();
         topicRepository.findByCourseId(courseId).forEach(t::add);
         return t;
     }
 
-    public List<Topic> getTopicById(int id) {
-        // return topics.stream().filter(t ->
-        // Integer.toString(t.getId()).equals(Integer.toString(id))).findFirst().get();
+    public List<Topic> getTopicById(String id) {
         try {
             return topicRepository.findById(id).stream().collect(Collectors.toList());
+            // return topicRepository.findById(id);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -58,7 +58,7 @@ public class TopicService {
 
     public Boolean deleteTopic(String id) {
         try {
-            topicRepository.deleteById(Integer.parseInt(id));
+            topicRepository.deleteById(id);
             return true;
         } catch (Exception e) {
             e.printStackTrace();

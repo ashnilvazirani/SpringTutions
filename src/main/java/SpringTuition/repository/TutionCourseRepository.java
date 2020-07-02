@@ -6,6 +6,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import SpringTuition.models.Course;
 
 @EnableJpaRepositories
-public interface TutionCourseRepository extends MongoRepository<Course, Integer> {
+public interface TutionCourseRepository extends MongoRepository<Course, String> {
 
 }

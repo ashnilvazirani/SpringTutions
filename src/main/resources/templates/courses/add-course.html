@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:insert="courses/view-course :: cssLinks">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="uk-container-large">
+        <div class="uk-container">
+            <form th:action="@{/course/save}" method="POST" th:object="${stream}">
+                <fieldset class="uk-fieldset">
+                    <legend class="uk-legend">Add Stream</legend>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="Course Name" id="courseName" name="courseName">
+                    </div>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="Course Field" id="courseField"
+                            name="courseField">
+                    </div>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="Course Year" id="courseYear" name="courseYear">
+                    </div>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="Course Duration" id="courseDuration"
+                            name="courseDuration">
+                    </div>
+
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="Course Description" id="courseDescription"
+                            name="courseDescription">
+                    </div>
+                    <div class="uk-margin">
+                        <select class="uk-select" th:each="s : ${streams}" name="streamId">
+                            <option th:value="${s.id}" th:text="${s.streamName}"></option>
+                        </select>
+                    </div>
+                    <div class="uk-margin">
+                        <button class="uk-button uk-button-primary" name="submitCourse" type="submit">Save</button>
+                        <a class="uk-button uk-button-danger" name="cancelBtn" type="button"
+                            th:href="@{/courses}">Cancel</a>
+                    </div>
+                    <!-- <div class="uk-margin">
+                        <select class="uk-select">
+                            <option>Option 01</option>
+                            <option>Option 02</option>
+                        </select>
+                    </div> -->
+
+                    <!-- <div class="uk-margin">
+                        <textarea class="uk-textarea" rows="5" placeholder="Textarea"></textarea>
+                    </div> -->
+
+                    <!-- <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                        <label><input class="uk-radio" type="radio" name="radio2" checked> A</label>
+                        <label><input class="uk-radio" type="radio" name="radio2"> B</label>
+                    </div>
+
+                    <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                        <label><input class="uk-checkbox" type="checkbox" checked> A</label>
+                        <label><input class="uk-checkbox" type="checkbox"> B</label>
+                    </div> -->
+
+                    <!-- <div class="uk-margin">
+                        <input class="uk-range" type="range" value="2" min="0" max="10" step="0.1">
+                    </div> -->
+
+                </fieldset>
+            </form>
+            <!-- <div th:insert="greeting :: streamData"></div> -->
+        </div>
+        <div th:insert="streams/view-stream :: scriptsLink"></div>
+    </div>
+</body>
+
+</html>

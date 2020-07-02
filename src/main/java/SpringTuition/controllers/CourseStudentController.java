@@ -33,7 +33,7 @@ public class CourseStudentController {
     // }
 
     @GetMapping("/coursestudent/{id}")
-    public CourseStudent getStudent(@PathVariable int id) {
+    public CourseStudent getStudent(@PathVariable String id) {
         try {
             return courseStudentService.getCourseStudentById(id);
         } catch (Exception e) {

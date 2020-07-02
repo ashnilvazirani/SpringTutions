@@ -24,7 +24,7 @@ public class StudentController {
     }
 
     @GetMapping("/student/{id}")
-    public Student getStudent(@PathVariable int id) {
+    public Student getStudent(@PathVariable String id) {
         try {
             return studentService.getStudentById(id);
         } catch (Exception e) {

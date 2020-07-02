@@ -28,18 +28,18 @@ public class CourseService {
         return t;
     }
 
-    public Course getCourseById(int id) {
+    public Course getCourseById(String id) {
         // return topics.stream().filter(t ->
         // Integer.toString(t.getId()).equals(Integer.toString(id))).findFirst().get();
         return ((Course) tutionCourseRepository.findById(id).get());
     }
 
-    public List<String> getAllStudentsForACourse(int courseId) {
+    public List<String> getAllStudentsForACourse(String courseId) {
         List<CourseStudent> t = new ArrayList<>();
         List<String> s = new ArrayList<>();
         courseStudentRepository.findAll().forEach(t::add);
         for (CourseStudent cs : t) {
-            if (cs.getCourseId() == courseId) {
+            if (cs.getCourseId().equals(courseId)) {
                 s.add(studentService.getStudentById(cs.getStudentId()).getStudentName());
             }
         }
@@ -57,7 +57,7 @@ public class CourseService {
 
     public Boolean deleteCourse(String id) {
         try {
-            tutionCourseRepository.deleteById(Integer.parseInt(id));
+            tutionCourseRepository.deleteById(id);
             return true;
         } catch (Exception e) {
             e.printStackTrace();

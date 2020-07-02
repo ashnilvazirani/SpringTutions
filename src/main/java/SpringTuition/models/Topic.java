@@ -13,20 +13,20 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Topic")
 public class Topic {
     @Id
-    int id;
+    String id;
     String topicName;
     String topicDescription;
+    String topicDate;
+    String topicTime;
     @ManyToOne
     Course course;
-    // String courseName;
-    Date topicDate;
-    String topicTime;
 
     public Topic() {
 
     }
 
-    public Topic(int id, String topicName, String topicDescription, Date topicaDate, String topicTime, int courseId) {
+    public Topic(String id, String topicName, String topicDescription, String topicaDate, String topicTime,
+            String courseId) {
         this.id = id;
         this.topicName = topicName;
         this.topicDescription = topicDescription;
@@ -37,11 +37,11 @@ public class Topic {
         // this.courseName = courseName;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(final int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -53,16 +53,12 @@ public class Topic {
         this.topicTime = topicTime;
     }
 
-    public Date getTopicDate() {
+    public String getTopicDate() {
         return this.topicDate;
     }
 
     public void setTopicDate(String topicDate) {
-        try {
-            this.topicDate = new SimpleDateFormat("dd/mm/yyy").parse(topicDate);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        this.topicDate = topicDate;
     }
 
     // public int getCourseId() {
@@ -89,8 +85,25 @@ public class Topic {
         this.course = course;
     }
 
+    public String getTopicDescription() {
+        return topicDescription;
+    }
+
+    public void setTopicDescription(String topicDescription) {
+        this.topicDescription = topicDescription;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
     @Override
     public String toString() {
-        return "Topics [courses=" + course + ", id=" + id + ", topicName=" + topicName + "]";
+        return "Topic [course=" + course + ", id=" + id + ", topicDate=" + topicDate + ", topicDescription="
+                + topicDescription + ", topicName=" + topicName + ", topicTime=" + topicTime + "]";
     }
 }

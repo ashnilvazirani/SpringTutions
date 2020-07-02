@@ -5,6 +5,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import SpringTuition.models.CourseStudent;
 import SpringTuition.models.Course;
 
-public interface CourseStudentRepository extends MongoRepository<CourseStudent, Integer> {
+public interface CourseStudentRepository extends MongoRepository<CourseStudent, String> {
     public Course findCourseByCourseId(int courseId);
 }

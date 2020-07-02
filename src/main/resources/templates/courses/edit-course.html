@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:insert="courses/view-course :: cssLinks">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="uk-container-large">
+        <div class="uk-container">
+            <form th:action="@{/course/edit/{id}(id=${course.id})}" method="POST" th:object="${course}">
+                <fieldset class="uk-fieldset">
+                    <legend class="uk-legend">Add Stream</legend>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="Course Name" id="courseName" name="courseName"
+                            th:value="${course.courseName}">
+                    </div>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="Course Field" id="courseField"
+                            name="courseField" th:value="${course.courseField}">
+                    </div>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="Course Year" id="courseYear" name="courseYear"
+                            th:value="${course.courseYear}">
+                    </div>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="Course Duration" id="courseDuration"
+                            name="courseDuration" th:value="${course.courseDuration}">
+                    </div>
+
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="Course Description" id="courseDescription"
+                            name="courseDescription" th:value="${course.courseDescription}">
+                    </div>
+                    <div class="uk-margin">
+                        <select class="uk-select" th:each="s : ${streams}" name="streamId">
+                            <option th:value="${s.id}" th:text="${s.streamName}"></option>
+                        </select>
+                    </div>
+                    <div class="uk-margin">
+                        <button class="uk-button uk-button-primary" name="submitCourse" type="submit">Update</button>
+                        <a class="uk-button uk-button-danger" name="cancelBtn" type="button"
+                            th:href="@{/courses}">Cancel</a>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div th:insert="courses/view-course :: scriptsLink"></div>
+    </div>
+</body>
+
+</html>

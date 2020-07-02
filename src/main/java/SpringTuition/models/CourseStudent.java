@@ -8,41 +8,41 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Entity
 @Document
 public class CourseStudent {
-    @Id
-    int id;
-    int courseId;
-    int studentId;
+    // @Id
+    String id;
+    String courseId;
+    String studentId;
 
     public CourseStudent() {
     }
 
-    public CourseStudent(int id, int courseId, int studentId) {
+    public CourseStudent(String id, String courseId, String studentId) {
         this.id = id;
         this.courseId = courseId;
         this.studentId = studentId;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getCourseId() {
+    public String getCourseId() {
         return courseId;
     }
 
-    public void setCourseId(int courseId) {
+    public void setCourseId(String courseId) {
         this.courseId = courseId;
     }
 
-    public int getStudentId() {
+    public String getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(int studentId) {
+    public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
 

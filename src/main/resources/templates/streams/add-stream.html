@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:insert="streams/view-stream :: cssLinks">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="uk-container-large">
+        <div class="uk-container">
+            <form th:action="@{/streams/save}" method="POST" th:object="${stream}">
+                <fieldset class="uk-fieldset">
+                    <legend class="uk-legend">Add Stream</legend>
+                    <div class="uk-margin">
+                        <!-- th:field="*{streamName}" -->
+                        <input class="uk-input" type="text" placeholder="Stream Name" id="streamName" name="streamName">
+                        <!-- <span th:if="${#fields.hasErrors('streamName')}" th:errors="*{streamName}" class="text-danger"></span> -->
+                    </div>
+                    <div class="uk-margin">
+                        <!-- th:field="*{streamDuration}" -->
+                        <input class="uk-input" type="text" placeholder="Stream Duration" id="streamDuration"
+                            name="streamDuration">
+                        <!-- <span th:if="${#fields.hasErrors('streamName')}" th:errors="*{streamName}" class="text-danger"></span> -->
+                    </div>
+                    <div class="uk-margin">
+                        <!-- th:field="*{streamDescription}" -->
+                        <input class="uk-input" type="text" placeholder="Stream Description" id="streamDescription"
+                            name="streamDescription">
+                        <!-- <span th:if="${#fields.hasErrors('streamName')}" th:errors="*{streamName}" class="text-danger"></span> -->
+                    </div>
+
+                    <div class="uk-margin">
+                        <!-- th:field="*{streamDescription}" -->
+                        <button class="uk-button uk-button-primary" name="submitStream" type="submit">Save</button>
+                        <!-- <span th:if="${#fields.hasErrors('streamName')}" th:errors="*{streamName}" class="text-danger"></span> -->
+                        <a class="uk-button uk-button-danger" name="cancelBtn" type="button"
+                            th:href="@{/streams}">Cancel</a>
+                    </div>
+                    <!-- <div class="uk-margin">
+                        <select class="uk-select">
+                            <option>Option 01</option>
+                            <option>Option 02</option>
+                        </select>
+                    </div> -->
+
+                    <!-- <div class="uk-margin">
+                        <textarea class="uk-textarea" rows="5" placeholder="Textarea"></textarea>
+                    </div> -->
+
+                    <!-- <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                        <label><input class="uk-radio" type="radio" name="radio2" checked> A</label>
+                        <label><input class="uk-radio" type="radio" name="radio2"> B</label>
+                    </div>
+
+                    <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                        <label><input class="uk-checkbox" type="checkbox" checked> A</label>
+                        <label><input class="uk-checkbox" type="checkbox"> B</label>
+                    </div> -->
+
+                    <!-- <div class="uk-margin">
+                        <input class="uk-range" type="range" value="2" min="0" max="10" step="0.1">
+                    </div> -->
+
+                </fieldset>
+            </form>
+            <!-- <div th:insert="greeting :: streamData"></div> -->
+        </div>
+        <div th:insert="streams/view-stream :: scriptsLink"></div>
+    </div>
+</body>
+
+</html>

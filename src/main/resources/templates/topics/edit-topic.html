@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:insert="courses/view-course :: cssLinks">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="uk-container-large">
+        <div class="uk-container">
+            <form th:action="@{/courses/{courseId}/topic/edit/{id}(courseId=${course.id})}" method="POST"
+                th:object="${topic}">
+                <fieldset class="uk-fieldset">
+                    <legend class="uk-legend" th:text="${'Add for course: '+course.courseName}"></legend>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="Name of topic" id="topicName" name="topicName"
+                            th:value="${topic.topicName}">
+                    </div>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="About the Topic" id="topicDescription"
+                            name="topicDescription" th:value="${topic.topicDescription}">
+                    </div>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="date" placeholder="Lecture Date" id="topicDate" name="topicDate"
+                            th:value="${topic.topicDate}">
+                    </div>
+
+                    <div class="uk-margin">
+                        <input class="uk-input" type="time" placeholder="Lecture Timings?" id="topicTime"
+                            name="topicTime" th:value="${topic.topicTime}">
+                    </div>
+                    <div class="uk-margin">
+                        <button class="uk-button uk-button-primary" name="submitStream" type="submit">Update</button>
+                        <a class="uk-button uk-button-danger" name="cancelBtn" type="button"
+                            th:href="@{/courses}">Cancel</a>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div th:insert="courses/view-course :: scriptsLink"></div>
+    </div>
+</body>
+
+</html>

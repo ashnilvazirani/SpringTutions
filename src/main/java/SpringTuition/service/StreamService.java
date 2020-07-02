@@ -20,7 +20,7 @@ public class StreamService {
         return t;
     }
 
-    public Stream getStreamById(int id) {
+    public Stream getStreamById(String id) {
         return ((Stream) streamRepository.findById(id).get());
     }
 
@@ -35,7 +35,7 @@ public class StreamService {
 
     public Boolean deleteStream(String id) {
         try {
-            streamRepository.deleteById(Integer.parseInt(id));
+            streamRepository.deleteById(id);
             return true;
         } catch (Exception e) {
             e.printStackTrace();

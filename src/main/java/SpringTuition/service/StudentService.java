@@ -22,7 +22,7 @@ public class StudentService {
         return t;
     }
 
-    public Student getStudentById(int id) {
+    public Student getStudentById(String id) {
         return ((Student) studentRepository.findById(id).get());
     }
 
@@ -49,7 +49,7 @@ public class StudentService {
 
     public Boolean deleteStudent(String id) {
         try {
-            studentRepository.deleteById(Integer.parseInt(id));
+            studentRepository.deleteById(id);
             return true;
         } catch (Exception e) {
             e.printStackTrace();

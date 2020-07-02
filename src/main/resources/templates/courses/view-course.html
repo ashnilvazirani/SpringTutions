@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.thymeleaf.org ">
+
+<head th:fragment="cssLinks">
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.5.4/css/uikit-rtl.min.css">
+    <!-- <link rel="stylesheet" th:href="@{./uikit-3.5.4/css/uikit-rtl.min.css}"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.5.4/css/uikit.min.css">
+</head>
+
+<body>
+    <br>
+    <div th:fragment="courseData" class="uk-container-xsmall uk-align-center">
+        <a th:href="@{/courses/addNew}" class="uk-button uk-button-primary">Add New</a>
+        <table class="uk-table">
+            <caption>All Courses</caption>
+            <thead>
+                <tr>
+                    <td>Course Name</td>
+                    <td>Course Field</td>
+                    <td>Stream Name</td>
+                </tr>
+            </thead>
+            <!-- <tfoot>
+                <tr>
+                    <td>Table Footer</td>
+                    <td>Table Footer</td>
+                    <td>Table Footer</td>
+                </tr>
+            </tfoot> -->
+            <tbody>
+                <tr th:each="s : ${courses}">
+                    <td th:text="${s.courseName}"></td>
+                    <td th:text="${s.courseField}"></td>
+                    <td th:text="${s.stream.streamName}"></td>
+                    <td><a th:href="@{/course/edit/{id}(id=${s.id})}" class="uk-button uk-button-primary">Edit</a></td>
+                    <td><a th:href="@{/course/delete/{id}(id=${s.id})}" class="uk-button uk-button-primary">Delete</a>
+                    <td><a th:href="@{/courses/{courseId}/topic/addNew(courseId=${s.id})}"
+                            class="uk-button uk-button-primary">+</a>
+                    </td>
+                    <td><a th:href="@{/course/{courseId}/topics(courseId=${s.id})}"
+                            class="uk-button uk-button-primary">Topics</a>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+<div th:fragment="scriptsLink">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.5.4/js/uikit-icons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.5.4/js/uikit.min.js"></script>
+</div>
+
+</html>

@@ -32,7 +32,7 @@ public class CourseStudentService {
         return data;
     }
 
-    public CourseStudent getCourseStudentById(final int id) {
+    public CourseStudent getCourseStudentById(String id) {
         return ((CourseStudent) courseStudentRepository.findById(id).get());
     }
 
@@ -61,9 +61,9 @@ public class CourseStudentService {
         courseStudentRepository.save(updatedTopic);
     }
 
-    public Boolean deleteCourseStudent(final String id) {
+    public Boolean deleteCourseStudent(String id) {
         try {
-            courseStudentRepository.deleteById(Integer.parseInt(id));
+            courseStudentRepository.deleteById(id);
             return true;
         } catch (final Exception e) {
             e.printStackTrace();
