@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:insert="students/view-student :: cssLinks">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="uk-container-large">
+        <div class="uk-container">
+            <form th:action="@{/coursestudents/save}" method="POST" th:object="${student}">
+                <fieldset class="uk-fieldset">
+                    <legend class="uk-legend">Add Student</legend>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="student Name" id="studentName"
+                            name="studentName" th:value="${student.studentName}" readonly>
+                        <input class="uk-input" type="hidden" id="studentId" name="studentId" th:value="${student.id}">
+                    </div>
+                    <div class="uk-margin">
+                        <select class="uk-select" th:each="s : ${courses}" name="courseId"
+                            th:if="${s.streamId == student.streamId}">
+                            <option th:value="${s.id}" th:text="${s.courseName}"></option>
+                        </select>
+                    </div>
+                    <div class="uk-margin">
+                        <button class="uk-button uk-button-primary" name="submitstudent" type="submit">Add</button>
+                        <a class="uk-button uk-button-danger" name="cancelBtn" type="button"
+                            th:href="@{/students}">Cancel</a>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div th:insert="streams/view-stream :: scriptsLink"></div>
+    </div>
+</body>
+
+</html>

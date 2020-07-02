@@ -2,21 +2,16 @@ package SpringTuition.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
 
 import SpringTuition.service.CourseService;
 import SpringTuition.service.StreamService;
 import SpringTuition.models.Course;
 import SpringTuition.models.Stream;
 
-// import SpringTuition.models.Student;
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -51,8 +46,10 @@ public class CourseController {
     }
 
     @GetMapping("/studentsByCourse/{id}")
-    public List<String> getStudentsForCourse(@PathVariable String id) {
-        return courseService.getAllStudentsForACourse(id);
+    public String getStudentsForCourse(@PathVariable String id, Model model) {
+        model.addAttribute("students", courseService.getAllStudentsForACourse(id));
+        model.addAttribute("course", courseService.getCourseById(id));
+        return "course-student/view-student-for-course";
     }
 
     @GetMapping("/courses/addNew")

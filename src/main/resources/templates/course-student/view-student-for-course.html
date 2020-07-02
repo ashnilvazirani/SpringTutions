@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.thymeleaf.org ">
+
+<head th:fragment="cssLinks">
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.5.4/css/uikit-rtl.min.css">
+    <!-- <link rel="stylesheet" th:href="@{./uikit-3.5.4/css/uikit-rtl.min.css}"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.5.4/css/uikit.min.css">
+</head>
+
+<body>
+    <br>
+    <div th:fragment="studentData" class="uk-container-xsmall uk-align-center">
+        <a th:href="@{/student/addCourse/{id}}" class="uk-button uk-button-primary">Add New</a>
+        <table class="uk-table">
+            <!-- <caption th:text="${'All students for Course: ' +course.courseName}"></caption> -->
+            <caption>All students for Course: <b>[[${course.courseName}]]</b></caption>
+            <thead>
+                <tr>
+                    <td>Students Name</td>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="s : ${students}">
+                    <td th:text="${s}"></td>
+                    <!-- <td th:text="${s.studentEmail+ ' ' +s.studentContact}"></td>
+                    <td th:text="${s.stream.streamName}"></td>
+                    <td><a th:href="@{/student/edit/{id}(id=${s.id})}" class="uk-button uk-button-primary">Edit</a></td>
+                    <td><a th:href="@{/student/delete/{id}(id=${s.id})}" class="uk-button uk-button-primary">Delete</a>
+                    <td><a th:href="@{/student/addCourse/{id}(id=${s.id})}" class="uk-button uk-button-primary">+</a> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+<div th:fragment="scriptsLink">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.5.4/js/uikit-icons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.5.4/js/uikit.min.js"></script>
+</div>
+
+</html>

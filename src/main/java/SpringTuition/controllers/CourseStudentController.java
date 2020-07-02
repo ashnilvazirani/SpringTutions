@@ -2,6 +2,9 @@ package SpringTuition.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +15,7 @@ import SpringTuition.models.*;
 import SpringTuition.service.CourseStudentService;
 import java.util.List;
 
-@RestController
+@Controller
 public class CourseStudentController {
     @Autowired
     CourseStudentService courseStudentService;
@@ -42,10 +45,10 @@ public class CourseStudentController {
         return null;
     }
 
-    @PostMapping(value = "/coursestudents")
-    public void saveStudent(@RequestBody CourseStudent t) {
-        // generate a id for the collection
+    @PostMapping(value = "/coursestudents/save")
+    public String saveStudent(@Validated CourseStudent t, Model model) {
         courseStudentService.createCourseStudent(t);
+        return "redirect:/students";
     }
 
     @PutMapping(value = "/coursestudent/{id}")

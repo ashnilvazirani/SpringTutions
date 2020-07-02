@@ -12,15 +12,15 @@
 
 <body>
     <br>
-    <div th:fragment="courseData" class="uk-container-xsmall uk-align-center">
-        <a th:href="@{/courses/addNew}" class="uk-button uk-button-primary">Add New</a>
+    <div th:fragment="studentData" class="uk-container-xsmall uk-align-center">
+        <a th:href="@{/students/addNew}" class="uk-button uk-button-primary">Add New</a>
         <table class="uk-table">
-            <caption>All Courses</caption>
+            <caption>All students</caption>
             <thead>
                 <tr>
-                    <td>Course Name</td>
-                    <td>Course Field</td>
-                    <td>Stream Name</td>
+                    <td>Name</td>
+                    <td>Contact</td>
+                    <td>Stream</td>
                 </tr>
             </thead>
             <!-- <tfoot>
@@ -31,20 +31,13 @@
                 </tr>
             </tfoot> -->
             <tbody>
-                <tr th:each="s : ${courses}">
-                    <td th:text="${s.courseName}"></td>
-                    <td th:text="${s.courseField}"></td>
+                <tr th:each="s : ${students}">
+                    <td th:text="${s.studentName}"></td>
+                    <td th:text="${s.studentEmail+ ' ' +s.studentContact}"></td>
                     <td th:text="${s.stream.streamName}"></td>
-                    <td><a th:href="@{/course/edit/{id}(id=${s.id})}" class="uk-button uk-button-primary">Edit</a></td>
-                    <td><a th:href="@{/course/delete/{id}(id=${s.id})}" class="uk-button uk-button-primary">Delete</a>
-                    <td><a th:href="@{/courses/{courseId}/topic/addNew(courseId=${s.id})}"
-                            class="uk-button uk-button-primary">+</a>
-                    </td>
-                    <td><a th:href="@{/course/{courseId}/topics(courseId=${s.id})}"
-                            class="uk-button uk-button-primary">Topics</a>
-                    </td>
-                    <td><a th:href="@{/studentsByCourse/{id}(id=${s.id})}"
-                            class="uk-button uk-button-primary">Students</a>
+                    <td><a th:href="@{/student/edit/{id}(id=${s.id})}" class="uk-button uk-button-primary">Edit</a></td>
+                    <td><a th:href="@{/student/delete/{id}(id=${s.id})}" class="uk-button uk-button-primary">Delete</a>
+                    <td><a th:href="@{/student/addCourse/{id}(id=${s.id})}" class="uk-button uk-button-primary">+</a>
                     </td>
                 </tr>
             </tbody>
