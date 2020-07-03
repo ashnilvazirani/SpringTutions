@@ -30,8 +30,8 @@
                             name="studentEmail">
                     </div>
                     <div class="uk-margin">
-                        <select class="uk-select" th:each="s : ${streams}" name="streamId">
-                            <option th:value="${s.id}" th:text="${s.streamName}"></option>
+                        <select class="uk-select" name="streamId">
+                            <option th:each="s : ${streams}" th:value="${s.id}" th:text="${s.streamName}"></option>
                         </select>
                     </div>
                     <div class="uk-margin">

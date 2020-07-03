@@ -36,7 +36,7 @@ public class CourseStudentService {
         return ((CourseStudent) courseStudentRepository.findById(id).get());
     }
 
-    public Course getACourse(int courseId) {
+    public Course getACourse(String courseId) {
         return courseStudentRepository.findCourseByCourseId(courseId);
     }
 
@@ -59,6 +59,10 @@ public class CourseStudentService {
 
     public void updateCourseStudent(final String id, final CourseStudent updatedTopic) {
         courseStudentRepository.save(updatedTopic);
+    }
+
+    public void removeLinkWhenStudentDeleted(String studentId) {
+        courseStudentRepository.deleteByStudentId(studentId);
     }
 
     public Boolean deleteCourseStudent(String id) {

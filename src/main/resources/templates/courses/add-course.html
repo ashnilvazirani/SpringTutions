@@ -12,7 +12,7 @@
         <div class="uk-container">
             <form th:action="@{/course/save}" method="POST" th:object="${stream}">
                 <fieldset class="uk-fieldset">
-                    <legend class="uk-legend">Add Stream</legend>
+                    <legend class="uk-legend">Add Course</legend>
                     <div class="uk-margin">
                         <input class="uk-input" type="text" placeholder="Course Name" id="courseName" name="courseName">
                     </div>
@@ -33,8 +33,8 @@
                             name="courseDescription">
                     </div>
                     <div class="uk-margin">
-                        <select class="uk-select" th:each="s : ${streams}" name="streamId">
-                            <option th:value="${s.id}" th:text="${s.streamName}"></option>
+                        <select class="uk-select" name="streamId">
+                            <option th:each="s : ${streams}" th:value="${s.id}" th:text="${s.streamName}"></option>
                         </select>
                     </div>
                     <div class="uk-margin">

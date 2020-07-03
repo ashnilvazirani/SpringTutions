@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <div th:insert="base :: navBarTop"></div>
     <br>
     <div th:fragment="courseData" class="uk-container-xsmall uk-align-center">
         <a th:href="@{/courses/addNew}" class="uk-button uk-button-primary">Add New</a>
@@ -18,30 +19,26 @@
             <caption>All Courses</caption>
             <thead>
                 <tr>
-                    <td>Course Name</td>
-                    <td>Course Field</td>
-                    <td>Stream Name</td>
+                    <td>Name</td>
+                    <td>Field</td>
+                    <td>Stream</td>
                 </tr>
             </thead>
-            <!-- <tfoot>
-                <tr>
-                    <td>Table Footer</td>
-                    <td>Table Footer</td>
-                    <td>Table Footer</td>
-                </tr>
-            </tfoot> -->
+
             <tbody>
                 <tr th:each="s : ${courses}">
                     <td th:text="${s.courseName}"></td>
                     <td th:text="${s.courseField}"></td>
                     <td th:text="${s.stream.streamName}"></td>
                     <td><a th:href="@{/course/edit/{id}(id=${s.id})}" class="uk-button uk-button-primary">Edit</a></td>
+                    <!-- <a class="uk-button uk-button-default uk-margin-small-right"  type="button"
+                        uk-toggle="target: #modal-example">Open</a> -->
                     <td><a th:href="@{/course/delete/{id}(id=${s.id})}" class="uk-button uk-button-primary">Delete</a>
                     <td><a th:href="@{/courses/{courseId}/topic/addNew(courseId=${s.id})}"
                             class="uk-button uk-button-primary">+</a>
                     </td>
-                    <td><a th:href="@{/course/{courseId}/topics(courseId=${s.id})}"
-                            class="uk-button uk-button-primary">Topics</a>
+                    <td><a th:href="@{/course/{courseId}/topics(courseId=${s.id})}" class="uk-button uk-button-primary"
+                            uk-icon="icon: heart">topics</a>
                     </td>
                     <td><a th:href="@{/studentsByCourse/{id}(id=${s.id})}"
                             class="uk-button uk-button-primary">Students</a>

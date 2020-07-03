@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import SpringTuition.models.Student;
 import SpringTuition.service.CourseService;
+import SpringTuition.service.CourseStudentService;
 import SpringTuition.service.StreamService;
 import SpringTuition.service.StudentService;
 // import java.util.List;
@@ -25,6 +26,8 @@ public class StudentController {
     StreamService streamService;
     @Autowired
     CourseService courseService;
+    @Autowired
+    CourseStudentService courseStudentService;
 
     @GetMapping("/students")
     public String getAllStudents(Model model) {
@@ -77,6 +80,7 @@ public class StudentController {
 
     @GetMapping(value = "/student/delete/{id}")
     public String deleteStudentById(@PathVariable String id, Model model) {
+        courseStudentService.removeLinkWhenStudentDeleted(id);
         studentService.deleteStudent(id);
         return "redirect:/students";
     }

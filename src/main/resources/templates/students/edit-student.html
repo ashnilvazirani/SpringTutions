@@ -35,9 +35,8 @@
                             name="studentDescription">
                     </div> -->
                     <div class="uk-margin">
-                        <select class="uk-select" th:each="s : ${streams}" name="streamId"
-                            th:value="${student.stream.streamName}">
-                            <option th:value="${s.id}" th:text="${s.streamName}"></option>
+                        <select class="uk-select" name="streamId" th:value="${student.stream.streamName}">
+                            <option th:each="s : ${streams}" th:value="${s.id}" th:text="${s.streamName}"></option>
                         </select>
                     </div>
                     <div class="uk-margin">

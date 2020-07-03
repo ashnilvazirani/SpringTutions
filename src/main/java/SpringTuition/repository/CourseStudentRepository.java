@@ -6,5 +6,7 @@ import SpringTuition.models.CourseStudent;
 import SpringTuition.models.Course;
 
 public interface CourseStudentRepository extends MongoRepository<CourseStudent, String> {
-    public Course findCourseByCourseId(int courseId);
+    public Course findCourseByCourseId(String courseId);
+
+    public void deleteByStudentId(String id);
 }
