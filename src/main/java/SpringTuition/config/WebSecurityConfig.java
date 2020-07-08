@@ -34,20 +34,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         provider.setPasswordEncoder(new BCryptPasswordEncoder());
         return provider;
     }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/");
+    }
     // @Bean
     // @Override
-    // protected UserDetailsService userDetailsService() {
+    // protected UserDetailsService userDetailsService() {csr
     // List<UserDetails> users = new ArrayList<>();
     // users.add(User.withDefaultPasswordEncoder().username("admin").password("admin").build());
     // // return super.userDetailsService();
     // return new InMemoryUserDetailsManager(users);
     // }
 
-    // @Override
-    // protected void configure(HttpSecurity http) throws Exception {
-    // // TODO Auto-generated method stub
-    // super.configure(http);
-    // http.csrf().disable().authorizeRequests().antMatchers("/login").permitAll().anyRequest().authenticated().and()
-    // .httpBasic();
-    // }
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests().antMatchers("/css/**", "/images/**").permitAll();
+        // super.configure(http);
+        // http.csrf().disable().authorizeRequests().antMatchers("/login").permitAll().anyRequest().authenticated().and()
+        // .httpBasic();
+    }
 }
