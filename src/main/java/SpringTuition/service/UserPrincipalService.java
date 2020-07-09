@@ -1,21 +1,17 @@
 package SpringTuition.service;
 
 import java.util.Collection;
-import java.util.Collections;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Service;
 
 import SpringTuition.models.User;
 
-// @Service
 public class UserPrincipalService implements UserDetails {
     /**
      *
      */
-    // private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     private User user;
 
     // public UserPrincipalService() {

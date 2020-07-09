@@ -18,6 +18,7 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User u = userRepository.findByUsername(username);
+        System.out.println(u);
         if (u == null) {
             throw new UsernameNotFoundException("Invalid credentials");
         }
